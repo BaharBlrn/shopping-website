@@ -26,8 +26,8 @@ public class Main {
         System.out.println("author: ");
         String a = s.next();
         System.out.println("prise ");
-        String p = s.next();
-        product productWillAdd ;
+        int  p = s.nextInt();
+        product productWillAdd = new product(1,n,a,p);
         Database.addAProduct(statement,productWillAdd);
 
 
