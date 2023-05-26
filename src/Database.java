@@ -14,13 +14,13 @@ public class Database {
         System.out.println(rs);
     }
     public static void addAProduct(@NotNull Statement statement, product productWillAdd) throws SQLException {
-        statement.executeUpdate("insert into products(id,name,author,prise) values (Aid, 'Aname' ,'Aauthor',Aprise))");
+        statement.executeUpdate("insert into products(id,name,author,price) values (1, 'Aname' ,'Aauthor',13)");
     }
     public void createBag(@NotNull Statement statement, String a) throws SQLException {
-        statement.executeUpdate("create table a(id,name,author,prise)");
+        statement.executeUpdate("create table a(id,name,author,price)");
     }
-    public void addToBag(Statement statement ) throws SQLException {
-        statement.executeUpdate("insert table a(id,name,author,prise) values (Aid, 'Aname' ,'Aauthor',Aprise)");
+    public void addToBag(@NotNull Statement statement ) throws SQLException {
+        statement.executeUpdate("insert table a(id,name,author,price) values (Aid, 'Aname' ,'Aauthor',Aprise)");
     }
 
 }
