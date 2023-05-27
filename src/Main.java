@@ -19,16 +19,8 @@ public class Main {
         Connection conn = DriverManager.getConnection(url, user, passwd);
         Statement statement = conn.createStatement();
 
-        Scanner s = new Scanner(System.in);
-        System.out.println("enter the values that you wanna add: ");
-        System.out.println("name: ");
-        String n = s.next();
-        System.out.println("author: ");
-        String a = s.next();
-        System.out.println("prise ");
-        int  p = s.nextInt();
-        product productWillAdd = new product(1,n,a,p);
-        Database.addAProduct(statement,productWillAdd);
+
+        Database.addAProduct(statement, conn );
 
 
     }
