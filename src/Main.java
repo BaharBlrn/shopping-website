@@ -1,7 +1,5 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.xml.crypto.Data;
+import java.sql.*;
 import java.util.Scanner;
 
 public class Main {
@@ -17,9 +15,9 @@ public class Main {
             System.out.println("driver not found");
         }
         Connection conn = DriverManager.getConnection(url, user, passwd);
-        Statement statement = conn.createStatement();
+        Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-
+        //Database.queryAProductByName("a", statement);
         Database.addAProduct(statement, conn );
 
 
