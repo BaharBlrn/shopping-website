@@ -10,13 +10,13 @@ public class Database {
         System.out.println(rs);
     }
 
-    public static void queryAProductByAuthor(String name, @NotNull Statement statement) throws SQLException {
-        ResultSet resultSet = statement.executeQuery("SELECT * from products WHERE name = '"+ name+"'");
+    public static void queryAProductByAuthor(String author, @NotNull Statement statement) throws SQLException {
+        ResultSet resultSet = statement.executeQuery("SELECT * from products WHERE author = '"+ author +"'");
         //PreparedStatement.getstring("name");
         while (resultSet.next()) {
             // Retrieve the value of the "name" column from each row
-            name = resultSet.getString("name");
-            String author = resultSet.getString("author");
+            String name = resultSet.getString("name");
+            author = resultSet.getString("author");
             int price = resultSet.getInt("price");
             // Do something with the retrieved name value
             System.out.print("  Name: " + name);
@@ -72,8 +72,9 @@ public class Database {
 
     }
 
-    public void createBag(@NotNull Statement statement, String a) throws SQLException {
-        statement.executeUpdate("create table ?(id,name,author,price)");
+    public static void createBag(@NotNull Statement statement, String a) throws SQLException {
+        statement.executeUpdate("create table  " +a+ "( id int primary key , name varchar(30) , author varchar(30) , price int);");
+        System.out.println("Your bag "+a+" created successfully ");
     }
 
     public void addToBag(@NotNull Statement statement) throws SQLException {
