@@ -5,9 +5,18 @@ import java.util.Scanner;
 
 public class Database {
 
-    public void seeProducts(@NotNull Statement statement) throws SQLException {
-        ResultSet rs = statement.executeQuery("SELECT * from products ");
-        System.out.println(rs);
+    public static void seeProducts(@NotNull Statement statement) throws SQLException {
+        ResultSet resultSet = statement.executeQuery("SELECT * from products ");
+        while (resultSet.next()) {
+            String id = resultSet.getString("id");
+            System.out.print(" "+id+" ");
+            String name = resultSet.getString("name");
+            System.out.print(" "+name+" ");
+            String author = resultSet.getString("author");
+            System.out.print(" "+author+" ");
+            String price = resultSet.getString("price");
+            System.out.println(" "+price+" ");
+        }
     }
 
     public static void queryAProductByAuthor(String author, @NotNull Statement statement) throws SQLException {
