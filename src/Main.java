@@ -17,11 +17,14 @@ public class Main {
         Connection conn = DriverManager.getConnection(url, user, passwd);
 
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-   //Database.seeProducts(statement);
+
+
+        //Database.seeProducts(statement);
         //String a ="Bahars_bag";
         //Database.createBag(statement,a);
         //Database.queryAProductByAuthor("b", statement);
         //Database.addAProduct(statement, conn );
+        //Database.addToBag(statement,conn,a);
 
 
     }
