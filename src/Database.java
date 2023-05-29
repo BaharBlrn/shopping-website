@@ -82,7 +82,7 @@ public class Database {
     }
 
     public static void createBag(@NotNull Statement statement, String a) throws SQLException {
-        statement.executeUpdate("create table  " +a+ "( id int primary key , name varchar(30) , author varchar(30) , price int);");
+        statement.executeUpdate("create table  " +a+ " ( id int primary key , name varchar(30) , author varchar(30) , price int);");
         System.out.println("Your bag "+a+" created successfully ");
     }
 

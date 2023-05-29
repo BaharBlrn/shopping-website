@@ -15,12 +15,13 @@ public class Main {
             System.out.println("driver not found");
         }
         Connection conn = DriverManager.getConnection(url, user, passwd);
+
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-   Database.seeProducts(statement);
-        /*String a ="Bahars bag";
-        Database.createBag(statement,a);
+   //Database.seeProducts(statement);
+        //String a ="Bahars_bag";
+        //Database.createBag(statement,a);
         //Database.queryAProductByAuthor("b", statement);
-        //Database.addAProduct(statement, conn );*/
+        //Database.addAProduct(statement, conn );
 
 
     }
