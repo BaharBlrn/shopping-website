@@ -18,9 +18,8 @@ public class Main {
 
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-
+        User.register(statement,conn);
         //Database.seeProducts(statement);
-        //String a ="Bahars_bag";
         //Database.createBag(statement,a);
         //Database.queryAProductByAuthor("b", statement);
         //Database.addAProduct(statement, conn );

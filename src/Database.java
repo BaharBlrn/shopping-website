@@ -119,7 +119,9 @@ public class Database {
         id = id + 1;
         return id;
     }
-    public static void deleteFromBag(){
-        
+    public static void deleteFromTable(@NotNull Statement statement, @NotNull Connection conn, String a, int id ) throws SQLException {
+        PreparedStatement preparedStatement = conn.prepareStatement("delete from " +a+ " where id = "+ id+";");
+        preparedStatement.executeUpdate();
+        System.out.println("The row successfully deleted!! ");
     }
 }
