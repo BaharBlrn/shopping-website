@@ -26,8 +26,7 @@ public class User {
             if (usernamesOnTable.equals(userName)) {
                 System.out.println("This username is not available! ");
                 break;
-            }
-             else {
+            } else {
 
                 ResultSet resultSet = statement.executeQuery("SELECT id FROM user ORDER BY id asc");
                 int id = 0;
@@ -47,5 +46,43 @@ public class User {
                 preparedStatement.executeUpdate();
             }
         }
+    }
+
+    public static void login(@NotNull Connection conn) throws SQLException {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter your username:");
+        String username = s.nextLine();
+        System.out.println("Enter your password:");
+        int password = s.nextInt();
+
+        String sql = "SELECT * FROM user WHERE username=? AND password=?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        // Set the parameters
+        stmt.setString(1, username); // replace with actual username input
+        stmt.setInt(2, password); // replace with actual password input
+
+        // Execute the query
+        ResultSet rs = stmt.executeQuery();
+
+        // Check if user credentials match
+        if (rs.next()) {
+            System.out.println("Login successful!");
+        } else {
+            System.out.println("Invalid username or password.");
+        }
+
+
+    }
+    public static void deleteID(@NotNull Connection conn) throws SQLException {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter the username you want to delete: ");
+        String username = s.nextLine();
+
+        PreparedStatement stmt = conn.prepareStatement("delete from user where username=? ");
+        stmt.setString(1, username);
+        stmt.executeUpdate();
+
+            System.out.println("The row successfully deleted!! ");
     }
 }

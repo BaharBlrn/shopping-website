@@ -119,7 +119,7 @@ public class Database {
         id = id + 1;
         return id;
     }
-    public static void deleteFromTable(@NotNull Statement statement, @NotNull Connection conn, String a, int id ) throws SQLException {
+    public static void deleteFromTable(@NotNull Statement statement, @NotNull Connection conn, String a, ResultSet id ) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareStatement("delete from " +a+ " where id = "+ id+";");
         preparedStatement.executeUpdate();
         System.out.println("The row successfully deleted!! ");

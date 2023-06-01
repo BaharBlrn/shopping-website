@@ -19,7 +19,9 @@ public class Main {
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
 
-        User.register(statement,conn);
+        User.deleteID(conn);
+        //User.login(conn);
+        //User.register(statement,conn);
         //Database.seeProducts(statement);
         //Database.createBag(statement,a);
         //Database.queryAProductByAuthor("b", statement);
