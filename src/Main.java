@@ -18,6 +18,7 @@ public class Main {
 
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
+
         User.register(statement,conn);
         //Database.seeProducts(statement);
         //Database.createBag(statement,a);
