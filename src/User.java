@@ -13,41 +13,38 @@ public class User {
     }
 
     public static void register(@NotNull Statement statement, @NotNull Connection conn) throws SQLException {
-        Scanner s = new Scanner(System.in);
-        System.out.println("username: ");
-        String userName = s.next();
-        System.out.println("password: ");
-        int password = s.nextInt();
+    Scanner scanner = new Scanner(System.in);
+System.out.println("Enter username: ");
+    String userName = scanner.next();
+System.out.println("Enter password: ");
+    int password = scanner.nextInt();
 
-        PreparedStatement preparedStatement0 = conn.prepareStatement("select username from user");
-        ResultSet a = preparedStatement0.executeQuery();
-        while (a.next()) {
-            String usernamesOnTable = a.getString("username");
-            if (usernamesOnTable.equals(userName)) {
-                System.out.println("This username is not available! ");
-                break;
-            } else {
+    PreparedStatement preparedStatement0 = conn.prepareStatement("SELECT username FROM user WHERE username = ?");
+preparedStatement0.setString(1, userName);
+    ResultSet resultSet = preparedStatement0.executeQuery();
 
-                ResultSet resultSet = statement.executeQuery("SELECT id FROM user ORDER BY id asc");
-                int id = 0;
-                if (resultSet.last()) {
-                    id = resultSet.getInt("id");
-                } else {
-                    // No rows found in the result set
-                    System.out.println("No rows found.");
-                }
-                resultSet.close();
-                id = id + 1;
-
-                PreparedStatement preparedStatement = conn.prepareStatement("insert into user(id,username,password) values (?,?,?)");
-                preparedStatement.setInt(1, Integer.parseInt(String.valueOf(id)));
-                preparedStatement.setString(2, String.valueOf(userName));
-                preparedStatement.setInt(3, Integer.valueOf(password));
-                preparedStatement.executeUpdate();
-            }
+if (resultSet.next()) {
+        System.out.println("This username is not available!");
+    } else {
+    resultSet = statement.executeQuery("SELECT id FROM user ORDER BY id ASC");
+        int id = 0;
+        if (resultSet.last()) {
+            id = resultSet.getInt("id");
+        } else {
+            System.out.println("No rows found.");
         }
-    }
+        resultSet.close();
+        id = id + 1;
 
+        PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO user(id, username, password) VALUES (?, ?, ?)");
+        preparedStatement.setInt(1, id);
+        preparedStatement.setString(2, userName);
+        preparedStatement.setInt(3, password);
+        preparedStatement.executeUpdate();
+
+        System.out.println("Your account has been created successfully");
+    }
+}
     public static void login(@NotNull Connection conn) throws SQLException {
         Scanner s = new Scanner(System.in);
         System.out.println("Enter your username:");

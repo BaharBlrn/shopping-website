@@ -18,8 +18,27 @@ public class Main {
 
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-
-        User.deleteID(conn);
+        /*System.out.println("WELCOME TO THE SHOPPING WEBSITE!");
+        System.out.println("Do you have an account?");
+        Scanner s = new Scanner(System.in);
+        String haveAnAccountAnswer = s.nextLine();
+        if(haveAnAccountAnswer.equalsIgnoreCase("no")){
+            System.out.println("You should create an account.");
+            System.out.println("You are directing to the register page.");
+            User.register(statement,conn);
+            if() {
+                System.out.println("You are directing to login page.");
+                User.login(conn);
+            }else{
+                System.out.println("Your attempt is invalid.");
+            }
+        }else if(haveAnAccountAnswer.equalsIgnoreCase("yes")){
+            System.out.println("You are directing to the login page.");
+            User.login(conn);
+        }else{
+            System.out.println("Please enter a proper answer!");
+        }*/
+        //User.deleteID(conn);
         //User.login(conn);
         //User.register(statement,conn);
         //Database.seeProducts(statement);
@@ -27,7 +46,7 @@ public class Main {
         //Database.queryAProductByAuthor("b", statement);
         //Database.addAProduct(statement, conn );
         //Database.addToBag(statement,conn,a);
-
+User.register(statement,conn);
 
     }
 }
