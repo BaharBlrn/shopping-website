@@ -7,12 +7,12 @@ public class User {
     int password;
     String userName;
 
-    public User(int password, String userName) {
+    public User() {
         this.password = password;
         this.userName = userName;
     }
 
-    public static void register(@NotNull Statement statement, @NotNull Connection conn) throws SQLException {
+    public static @NotNull String register(@NotNull Statement statement, @NotNull Connection conn) throws SQLException {
     Scanner scanner = new Scanner(System.in);
 System.out.println("Enter username: ");
     String userName = scanner.next();
@@ -23,10 +23,11 @@ System.out.println("Enter password: ");
 preparedStatement0.setString(1, userName);
     ResultSet resultSet = preparedStatement0.executeQuery();
 
-if (resultSet.next()) {
+    if (resultSet.next()) {
         System.out.println("This username is not available!");
+        return "b";
     } else {
-    resultSet = statement.executeQuery("SELECT id FROM user ORDER BY id ASC");
+        resultSet = statement.executeQuery("SELECT id FROM user ORDER BY id ASC");
         int id = 0;
         if (resultSet.last()) {
             id = resultSet.getInt("id");
@@ -43,9 +44,10 @@ if (resultSet.next()) {
         preparedStatement.executeUpdate();
 
         System.out.println("Your account has been created successfully");
-    }
+        return "a";
 }
-    public static void login(@NotNull Connection conn) throws SQLException {
+}
+    public static String login(@NotNull Connection conn) throws SQLException {
         Scanner s = new Scanner(System.in);
         System.out.println("Enter your username:");
         String username = s.nextLine();
@@ -65,8 +67,10 @@ if (resultSet.next()) {
         // Check if user credentials match
         if (rs.next()) {
             System.out.println("Login successful!");
+            return "a";
         } else {
             System.out.println("Invalid username or password.");
+            return "b";
         }
 
 

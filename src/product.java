@@ -10,4 +10,8 @@ public class product {
         this.id=id;
         this.price=prise;
     }
+    public void adminList(){
+        System.out.println("Type 'list' to see the list of the products: ");
+        System.out.println("Type 'add' to add a new product: ");
+    }
 }

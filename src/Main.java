@@ -18,26 +18,35 @@ public class Main {
 
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-        /*System.out.println("WELCOME TO THE SHOPPING WEBSITE!");
+        System.out.println("WELCOME TO THE SHOPPING WEBSITE!");
         System.out.println("Do you have an account?");
         Scanner s = new Scanner(System.in);
         String haveAnAccountAnswer = s.nextLine();
         if(haveAnAccountAnswer.equalsIgnoreCase("no")){
             System.out.println("You should create an account.");
+            System.out.println("...");
             System.out.println("You are directing to the register page.");
-            User.register(statement,conn);
-            if() {
-                System.out.println("You are directing to login page.");
-                User.login(conn);
-            }else{
-                System.out.println("Your attempt is invalid.");
+            boolean b = true;
+            while(true) {
+                String result = User.register(statement, conn);
+                if (result.equals("a")) {
+                    System.out.println("You are directing to login page.");
+                    User.login(conn);
+                    break;
+                } else if (result.equals("b")) {
+                }
             }
         }else if(haveAnAccountAnswer.equalsIgnoreCase("yes")){
             System.out.println("You are directing to the login page.");
-            User.login(conn);
+            String res = User.login(conn);
+            if(res.equals("a")){
+
+            }else if(res.equals("b")){
+                User.login(conn);
+            }
         }else{
             System.out.println("Please enter a proper answer!");
-        }*/
+        }
         //User.deleteID(conn);
         //User.login(conn);
         //User.register(statement,conn);
@@ -46,7 +55,7 @@ public class Main {
         //Database.queryAProductByAuthor("b", statement);
         //Database.addAProduct(statement, conn );
         //Database.addToBag(statement,conn,a);
-User.register(statement,conn);
+        // User.register(statement,conn);
 
     }
 }
