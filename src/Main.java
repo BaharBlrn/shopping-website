@@ -29,19 +29,23 @@ public class Main {
             boolean b = true;
             while(true) {
                 String result = User.register(statement, conn);
-                if (result.equals("a")) {
+                if (result.equals("available")) {
                     System.out.println("You are directing to login page.");
-                    User.login(conn);
-                    break;
-                } else if (result.equals("b")) {
+                    String r = User.login(conn);
+                    if(r.equals("available")){
+                        product.userList(statement,conn,);
+                    }else{
+                        User.login(conn);
+                    }
+                } else if (result.equals("notAvailable")) {
                 }
             }
         }else if(haveAnAccountAnswer.equalsIgnoreCase("yes")){
             System.out.println("You are directing to the login page.");
             String res = User.login(conn);
-            if(res.equals("a")){
+            if(res.equals("available")){
 
-            }else if(res.equals("b")){
+            }else if(res.equals("notAvailable")){
                 User.login(conn);
             }
         }else{

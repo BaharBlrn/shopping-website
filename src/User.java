@@ -25,7 +25,7 @@ preparedStatement0.setString(1, userName);
 
     if (resultSet.next()) {
         System.out.println("This username is not available!");
-        return "b";
+        return "notAvailable";
     } else {
         resultSet = statement.executeQuery("SELECT id FROM user ORDER BY id ASC");
         int id = 0;
@@ -44,7 +44,7 @@ preparedStatement0.setString(1, userName);
         preparedStatement.executeUpdate();
 
         System.out.println("Your account has been created successfully");
-        return "a";
+        return "available";
 }
 }
     public static String login(@NotNull Connection conn) throws SQLException {
@@ -67,10 +67,10 @@ preparedStatement0.setString(1, userName);
         // Check if user credentials match
         if (rs.next()) {
             System.out.println("Login successful!");
-            return "a";
+            return "available";
         } else {
             System.out.println("Invalid username or password.");
-            return "b";
+            return "notAvailable";
         }
 
 
